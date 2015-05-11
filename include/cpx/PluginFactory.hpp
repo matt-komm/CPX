@@ -2,6 +2,7 @@
 #define __CPX_PLUGINFACTORY_H__
 
 #include "AbstractProducer.hpp"
+#include "LibraryLoader.hpp"
 
 #include <unordered_map>
 #include <vector>
@@ -12,28 +13,18 @@ namespace cpx
 class PluginFactory
 {
     protected:
-        PluginFactory() {}
-        
+        AbstractLibraryLoader* _libLoader;
         std::unordered_map<std::string,AbstractProducer*> _producers;
+    
+        PluginFactory();
     public:
         static PluginFactory& getInstance()
         {
             static PluginFactory pluginFactory;
             return pluginFactory;
         }
-        void registerProducer(AbstractProducer* producer)
-        {
-            _producers[producer->getPluginName()]=producer;
-        }
-        std::vector<std::string> getRegisteredPluginNames()
-        {
-            std::vector<std::string> keys(_producers.size());
-            for (std::unordered_map<std::string,AbstractProducer*>::iterator it = _producers.begin(); it!=_producers.end(); ++it)
-            {
-                keys[std::distance(it,_producers.begin())]=it->first;
-            }
-            return keys;
-        }
+        void registerProducer(AbstractProducer* producer);
+        std::vector<std::string> getRegisteredPluginNames();
         template<class PRODUCER> PRODUCER* getProducer(const std::string& name)
         {
             std::unordered_map<std::string,AbstractProducer*>::iterator it = _producers.find(name);
@@ -47,15 +38,7 @@ class PluginFactory
             }
             return nullptr;
         }  
-                
-        
-        /*
-        Class(const Class& c);
-        Class(Class&& c);
-        Class& operator=(const Class& c);
-        Class& operator=(Class&& c);
-        ~Class();
-        */
+        void loadLibrary(const std::string& path);
 };
 
 }

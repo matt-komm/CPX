@@ -8,7 +8,15 @@ add_definitions(-DOS_${OSNAME})
 set(CMAKE_CXX_FLAGS "-Wextra -Wall -pedantic -std=c++0x -Wno-unused-parameter" ${CMAKE_CXX_FLAGS} )
 #set(CMAKE_INSTALL_PREFIX ${PROJECT_BINARY_DIR}/release)
 
-include_directories(${PROJECT_SOURCE_DIR}/include)
+include_directories(${PROJECT_SOURCE_DIR}/include ${PROJECT_SOURCE_DIR}/src)
+
+add_library(cpx
+    src/PluginFactory.cpp
+    src/LibraryLoader.cpp
+)
+if (OSNAME STREQUAL "LINUX")
+target_link_libraries(cpx dl)
+endif (OSNAME STREQUAL "LINUX")
 
 OPTION(ENABLE_TEST "Build tests" ON)
 
