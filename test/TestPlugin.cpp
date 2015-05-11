@@ -27,9 +27,9 @@ class TestPlugin:
             return "TestPlugin";
         }
         
-        static Version getVersion()
+        static cpx::Version getVersion()
         {
-            return Version(1,0);
+            return cpx::Version(1,0);
         }
         
         static std::string getDescription()
@@ -45,5 +45,5 @@ class TestPlugin:
         */
 };
 
-typedef PluginProducer<TestPluginInterface,std::string> TestProducer;
+typedef cpx::PluginProducer<TestPluginInterface,std::string> TestProducer;
 REGISTER_PLUGIN(TestProducer,TestPlugin)

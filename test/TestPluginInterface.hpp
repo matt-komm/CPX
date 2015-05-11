@@ -23,9 +23,9 @@ class TestPluginInterface
             return "TestPluginInterface";
         }
         
-        static Version getInterfaceVersion()
+        static cpx::Version getInterfaceVersion()
         {
-            return Version(0,0);
+            return cpx::Version(0,0);
         }
         
         virtual std::string testString() const = 0;

@@ -1,6 +1,9 @@
 #ifndef __CPX_VERSION_H__
 #define __CPX_VERSION_H__
 
+namespace cpx
+{
+
 struct Version
 {
     protected:
@@ -13,6 +16,8 @@ struct Version
         {
         }
 };
+
+}
 
 #endif
 

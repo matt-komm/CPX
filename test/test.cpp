@@ -15,7 +15,7 @@ int main()
     {
         std::cout<<"plugin: "<<pName<<std::endl;
     }*/
-    TestProducer* pluginProducer = PluginFactory::getInstance().getProducer<TestProducer>("TestPlugin");
+    TestProducer* pluginProducer = cpx::PluginFactory::getInstance().getProducer<TestProducer>("TestPlugin");
     std::cout<<pluginProducer->info()<<std::endl;
     TestPluginInterface* t = pluginProducer->create("blublb");
     (void)t;

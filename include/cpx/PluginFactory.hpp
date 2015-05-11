@@ -6,6 +6,9 @@
 #include <unordered_map>
 #include <vector>
 
+namespace cpx
+{
+
 class PluginFactory
 {
     protected:
@@ -54,6 +57,8 @@ class PluginFactory
         ~Class();
         */
 };
+
+}
 
 #endif
 

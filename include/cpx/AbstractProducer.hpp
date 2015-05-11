@@ -6,6 +6,9 @@
 #include <string>
 #include <sstream>
 
+namespace cpx
+{
+
 class AbstractProducer
 {
     protected:
@@ -26,6 +29,8 @@ class AbstractProducer
             return ss.str();
         }
 };
+
+}
 
 #endif
 

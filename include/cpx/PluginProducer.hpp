@@ -6,6 +6,9 @@
 
 #include <string>
 
+namespace cpx
+{
+
 template<class INTERFACE, class... ARGS>
 class PluginProducer:
     public AbstractProducer
@@ -56,6 +59,8 @@ class PluginProducer:
                 }
         };
 };
+
+}
 
 
 #define REGISTER_PLUGIN(PRODUCER, PLUGINCLASS) \
