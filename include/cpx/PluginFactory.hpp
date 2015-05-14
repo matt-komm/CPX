@@ -1,8 +1,9 @@
 #ifndef __CPX_PLUGINFACTORY_H__
 #define __CPX_PLUGINFACTORY_H__
 
-#include "AbstractProducer.hpp"
-#include "LibraryLoader.hpp"
+#include "cpx/AbstractProducer.hpp"
+#include "cpx/LibraryLoader.hpp"
+#include "cpx/Exception.hpp"
 
 #include <unordered_map>
 #include <vector>
@@ -34,6 +35,10 @@ class PluginFactory
                 if (producer)
                 {
                     return producer;
+                }
+                else
+                {
+                    cpx_throw("Atempting wrong cast. Producer is of type '",it->second->getInterfaceName(),"'");
                 }
             }
             return nullptr;

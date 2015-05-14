@@ -1,8 +1,8 @@
 #ifndef __CPX_PLUGINPRODUCER_H__
 #define __CPX_PLUGINPRODUCER_H__
 
-#include "AbstractProducer.hpp"
-#include "PluginFactory.hpp"
+#include "cpx/AbstractProducer.hpp"
+#include "cpx/PluginFactory.hpp"
 
 #include <string>
 

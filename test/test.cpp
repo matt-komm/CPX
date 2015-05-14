@@ -13,7 +13,7 @@ int main()
     for (const std::string& pName: cpx::PluginFactory::getInstance().getRegisteredPluginNames())
     {
         cpx::AbstractProducer* producer = cpx::PluginFactory::getInstance().getProducer<cpx::AbstractProducer>(pName);
-        std::cout<<"plugin: "<<producer->info()<<std::endl;
+        std::cout<<"plugin: "<<producer->toString()<<std::endl;
     }
     //TestProducer* pluginProducer = cpx::PluginFactory::getInstance().getProducer<TestProducer>("TestPlugin");
     //std::cout<<pluginProducer->info()<<std::endl;

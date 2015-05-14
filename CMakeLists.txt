@@ -14,9 +14,11 @@ add_library(cpx
     src/PluginFactory.cpp
     src/LibraryLoader.cpp
 )
+
 if (OSNAME STREQUAL "LINUX")
-target_link_libraries(cpx dl)
+    target_link_libraries(cpx dl)
 endif (OSNAME STREQUAL "LINUX")
+
 
 OPTION(ENABLE_TEST "Build tests" ON)
 
