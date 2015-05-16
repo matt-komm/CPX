@@ -3,7 +3,11 @@
 
 #include "LinuxLibraryLoader.cpp"
 
-#else
+#endif
+    
+#ifdef OS_WINDOWS
+#define LIBLOADERSRC
+#include "WindowsLibraryLoader.cpp"
 //....
 #endif
 

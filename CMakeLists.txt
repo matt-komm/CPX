@@ -5,7 +5,7 @@ include(detectOS.cmake)
 add_definitions(-DOS_${OSNAME})
 
 
-set(CMAKE_CXX_FLAGS "-Wextra -Wall -pedantic -std=c++0x -Wno-unused-parameter" ${CMAKE_CXX_FLAGS} )
+set(CMAKE_CXX_FLAGS "-pedantic -std=c++0x" ${CMAKE_CXX_FLAGS} )
 #set(CMAKE_INSTALL_PREFIX ${PROJECT_BINARY_DIR}/release)
 
 include_directories(${PROJECT_SOURCE_DIR}/include ${PROJECT_SOURCE_DIR}/src)

@@ -41,8 +41,16 @@ namespace cpx
     typedef LinuxLibraryLoader LibraryLoader;
 }
 
-#else
-//....
+#endif
+#ifdef OS_WINDOWS
+#define LIBLOADERHEADERFOUND
+
+#include "cpx/WindowsLibraryLoader.hpp"
+namespace cpx
+{
+    typedef WindowsLibraryLoader LibraryLoader;
+}
+
 #endif
 
 #ifndef LIBLOADERHEADERFOUND
