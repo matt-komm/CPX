@@ -1,7 +1,6 @@
-
 #include "cpx/PluginFactory.hpp"
 
-//#include "TestPlugin.cpp"
+#include "TestPluginInterface.hpp"
 
 #include <iostream>
 #include <string>
@@ -13,12 +12,14 @@ int main()
     for (const std::string& pName: cpx::PluginFactory::getInstance().getRegisteredPluginNames())
     {
         cpx::AbstractProducer* producer = cpx::PluginFactory::getInstance().getProducer<cpx::AbstractProducer>(pName);
-        std::cout<<"plugin: "<<producer->toString()<<std::endl;
+        std::cout<<"loaded plugins: "<<producer->toString()<<std::endl;
     }
-    //TestProducer* pluginProducer = cpx::PluginFactory::getInstance().getProducer<TestProducer>("TestPlugin");
-    //std::cout<<pluginProducer->info()<<std::endl;
-    //TestPluginInterface* t = pluginProducer->create("blublb");
-    //(void)t;
+    /*
+    TestPluginProducer* pluginProducer = cpx::PluginFactory::getInstance().getProducer<TestPluginProducer>("TestPlugin");
+    std::cout<<pluginProducer->toString()<<std::endl;
+    TestPluginInterface* t = pluginProducer->create("blublb");
+    (void)t;
+    */
     return 0;
 }
 

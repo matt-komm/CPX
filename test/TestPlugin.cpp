@@ -1,4 +1,3 @@
-#include "cpx/PluginProducer.hpp"
 #include "cpx/Version.hpp"
 
 #include "TestPluginInterface.hpp"
@@ -36,14 +35,9 @@ class TestPlugin:
         {
             return "blub";
         }
-        /*
-        Class(const Class& c);
-        Class(Class&& c);
-        Class& operator=(const Class& c);
-        Class& operator=(Class&& c);
-        ~Class();
-        */
 };
 
-typedef cpx::PluginProducer<TestPluginInterface,std::string> TestProducer;
-REGISTER_PLUGIN(TestProducer,TestPlugin)
+static cpx::ConcretePluginProducer<TestPluginProducer,TestPlugin> testplugin;
+
+//REGISTER_PLUGIN(TestPluginProducer,TestPlugin)
+

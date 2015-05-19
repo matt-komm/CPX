@@ -25,7 +25,7 @@ class AbstractProducer
         virtual std::string toString() const
         {
             std::stringstream ss;
-            ss<<"Plugin = "<<getPluginName()<<", Interface = "<<getInterfaceName();
+            ss<<"Plugin = "<<getPluginName()<<"@"<<getPluginVersion().toString()<<", Interface = "<<getInterfaceName()<<"@"<<getInterfaceVersion().toString();
             return ss.str();
         }
 };
