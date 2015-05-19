@@ -17,13 +17,10 @@ class PluginFactory
         AbstractLibraryLoader* _libLoader;
         std::unordered_map<std::string,AbstractProducer*> _producers;
     
-        PluginFactory();
+        
     public:
-         static PluginFactory& getInstance()
-        {
-            static PluginFactory pluginFactory;
-            return pluginFactory;
-        }
+        PluginFactory();
+
         void registerProducer(AbstractProducer* producer);
         std::vector<std::string> getRegisteredPluginNames();
         template<class PRODUCER> PRODUCER* getProducer(const std::string& name)

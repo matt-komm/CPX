@@ -100,12 +100,13 @@ class ConcretePluginProducer:
     public PRODUCER
 {
     public:
-        ConcretePluginProducer()
+        ConcretePluginProducer(PluginFactory* pluginFactory)
         {
-            std::cout<<"register plugin ..."<<&cpx::PluginFactory::getInstance()<<std::endl;
-            PluginFactory& f = PluginFactory::getInstance(); 
-            f.registerProducer(this);
+            std::cout<<"register plugin "<<this<<" in factory "<<pluginFactory<<std::endl;
+            //PluginFactory& f = PluginFactory::getInstance(); 
+            pluginFactory->registerProducer(this);
         }
+
         virtual typename PRODUCER::Interface* create(typename PRODUCER::Signature& signature) const
         {
             return signature.template create<PLUGINCLASS>();
@@ -123,6 +124,11 @@ class ConcretePluginProducer:
         {
             return "";
         }
+
+        virtual ~ConcretePluginProducer()
+        {
+            std::cout<<"destroy producer "<<this<<std::endl;
+        } 
 };
     
 }

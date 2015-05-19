@@ -4,7 +4,7 @@
 
 #include <string>
 #include <iostream>
-#include <tuple>
+#include <memory>
 
 class TestPlugin:
     public TestPluginInterface
@@ -37,7 +37,13 @@ class TestPlugin:
         }
 };
 
-static cpx::ConcretePluginProducer<TestPluginProducer,TestPlugin> testplugin;
+extern "C"
+{
+    void init(cpx::PluginFactory* pluginFactory)
+    {
+        static cpx::ConcretePluginProducer<TestPluginProducer,TestPlugin> producer(pluginFactory);
+    }
+}
 
 //REGISTER_PLUGIN(TestPluginProducer,TestPlugin)
 

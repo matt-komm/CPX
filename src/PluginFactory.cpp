@@ -4,7 +4,7 @@ namespace cpx
 {
 
 PluginFactory::PluginFactory():
-    _libLoader(new LibraryLoader())
+    _libLoader(new LibraryLoader(this))
 {
 }
 

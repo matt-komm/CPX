@@ -12,13 +12,16 @@
 namespace cpx
 {
 
+class PluginFactory;
+
 class WindowsLibraryLoader:
     public AbstractLibraryLoader
 {
     protected:
         std::map<std::string,HINSTANCE> _loadedLibHandles;
+        PluginFactory* _pluginFactory;
     public:
-        WindowsLibraryLoader();
+        WindowsLibraryLoader(PluginFactory* pluginFactory);
         virtual ~WindowsLibraryLoader();
         virtual void loadLibrary(std::string file);
 };
