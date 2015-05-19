@@ -19,7 +19,7 @@ class PluginFactory
     
         PluginFactory();
     public:
-        static PluginFactory& getInstance()
+         static PluginFactory& getInstance()
         {
             static PluginFactory pluginFactory;
             return pluginFactory;

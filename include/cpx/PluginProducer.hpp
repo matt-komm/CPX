@@ -5,6 +5,7 @@
 #include "cpx/PluginFactory.hpp"
 
 #include <string>
+#include <iostream>
 
 namespace cpx
 {
@@ -101,6 +102,7 @@ class ConcretePluginProducer:
     public:
         ConcretePluginProducer()
         {
+            std::cout<<"register plugin ..."<<&cpx::PluginFactory::getInstance()<<std::endl;
             PluginFactory& f = PluginFactory::getInstance(); 
             f.registerProducer(this);
         }

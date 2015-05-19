@@ -6,6 +6,8 @@
 #include <string>
 #include <map>
 
+#include <windows.h>
+
 
 namespace cpx
 {
@@ -14,9 +16,7 @@ class WindowsLibraryLoader:
     public AbstractLibraryLoader
 {
     protected:
-        typedef void (*init_function_type)(void);
-
-        std::map<std::string,void*> _loadedLibHandles;
+        std::map<std::string,HINSTANCE> _loadedLibHandles;
     public:
         WindowsLibraryLoader();
         virtual ~WindowsLibraryLoader();

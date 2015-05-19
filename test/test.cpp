@@ -7,7 +7,8 @@
 
 int main()
 {
-    cpx::PluginFactory::getInstance().loadLibrary("test/libcpx-test-plugin.so");
+    std::cout<<"start..."<<&cpx::PluginFactory::getInstance()<<std::endl;
+    cpx::PluginFactory::getInstance().loadLibrary("test/libcpx-test-plugin.dll");
     
     for (const std::string& pName: cpx::PluginFactory::getInstance().getRegisteredPluginNames())
     {
