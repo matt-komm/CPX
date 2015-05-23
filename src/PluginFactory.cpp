@@ -28,6 +28,11 @@ void PluginFactory::loadLibrary(const std::string& path)
     _libLoader->loadLibrary(path);
 }
 
+PluginFactory::~PluginFactory()
+{
+    delete _libLoader;
+}
+
 }
 
 

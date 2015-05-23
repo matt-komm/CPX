@@ -39,7 +39,11 @@ void LinuxLibraryLoader::loadLibrary(std::string file)
 
 LinuxLibraryLoader::~LinuxLibraryLoader()
 {
-    //dlclose(lib_handle);
+    for (auto handle: _loadedLibHandles)
+    {
+        dlclose(handle.second);
+    }
+    //
 }
 
 }

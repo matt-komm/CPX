@@ -41,6 +41,8 @@ class PluginFactory
             return nullptr;
         }  
         void loadLibrary(const std::string& path);
+        
+        ~PluginFactory();
 };
 
 }

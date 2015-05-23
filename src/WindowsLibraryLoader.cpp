@@ -70,7 +70,10 @@ void WindowsLibraryLoader::loadLibrary(std::string file)
 
 WindowsLibraryLoader::~WindowsLibraryLoader()
 {
-    //dlclose(lib_handle);
+    for (auto handle: _loadedLibHandles)
+    {
+        FreeLibrary(handle.second);
+    }
 }
 
 }
