@@ -39,9 +39,10 @@ class TestPlugin:
 
 extern "C"
 {
-    void init(cpx::PluginFactory* pluginFactory)
+    int init(cpx::PluginFactory* pluginFactory)
     {
         static cpx::ConcretePluginProducer<TestPluginProducer,TestPlugin> producer(pluginFactory);
+        return 0;
     }
 }
 

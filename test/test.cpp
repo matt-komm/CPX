@@ -9,13 +9,13 @@ int main()
 {
     cpx::PluginFactory pl;
     std::cout<<"start..."<<&pl<<std::endl;
-    pl.loadLibrary("test/libcpx-test-plugin.dll");
+    pl.loadLibrary("test/test-plugin.cpx");
     
     
     for (const std::string& pName: pl.getRegisteredPluginNames())
     {
-        cpx::AbstractProducer* producer = pl.getProducer<cpx::AbstractProducer>(pName);
-        std::cout<<"loaded plugins: "<<producer->toString()<<std::endl;
+        //cpx::AbstractProducer* producer = pl.getProducer<cpx::AbstractProducer>(pName);
+        //std::cout<<"loaded plugins: "<<producer->toString()<<std::endl;
     }
     
     /*

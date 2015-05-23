@@ -16,7 +16,7 @@ WindowsLibraryLoader::WindowsLibraryLoader(cpx::PluginFactory* pluginFactory):
 
 void WindowsLibraryLoader::loadLibrary(std::string file)
 {
-    typedef int (__cdecl *MYPROC)(cpx::PluginFactory*); 
+    typedef int (__cdecl *InitFct)(cpx::PluginFactory*); 
     std::cout<<"loading lib: "<<file<<std::endl;
     if (_loadedLibHandles.find(file)==_loadedLibHandles.end())
     {
@@ -40,8 +40,8 @@ void WindowsLibraryLoader::loadLibrary(std::string file)
                 cpx_throw("Error while opening file: '",file,"': ",lpBuffer);
             }
         }
-        MYPROC initPtr = (MYPROC) GetProcAddress(lib_handle, "init");
-        if (!initPtr)
+        InitFct initFct = (InitFct) GetProcAddress(lib_handle, "init");
+        if (!initFct)
         {
             DWORD dwLastError = GetLastError();
             const unsigned int N = 256;
@@ -57,10 +57,10 @@ void WindowsLibraryLoader::loadLibrary(std::string file)
                     N-1,                     // Number of bytes to store the message
                     NULL
                 );
-                cpx_throw("Error while getting the init function in file : '",file,"': ",lpBuffer);
+                cpx_throw("Error while initializing file: '",file,"': ",lpBuffer);
             }
         }
-        (initPtr)(_pluginFactory);
+        (initFct)(_pluginFactory);
         _loadedLibHandles[file]=lib_handle;
         
         
