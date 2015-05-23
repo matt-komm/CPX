@@ -5,9 +5,9 @@
 namespace cpx
 {
 
-LinuxLibraryLoader::LinuxLibraryLoader()
+LinuxLibraryLoader::LinuxLibraryLoader(PluginFactory* pluginFactory):
+    _pluginFactory(pluginFactory)
 {
-
 }
 
 void LinuxLibraryLoader::loadLibrary(std::string file)

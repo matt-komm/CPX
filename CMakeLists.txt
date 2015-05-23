@@ -10,7 +10,7 @@ set(CMAKE_CXX_FLAGS "-pedantic -std=c++0x" ${CMAKE_CXX_FLAGS} )
 
 include_directories(${PROJECT_SOURCE_DIR}/include ${PROJECT_SOURCE_DIR}/src)
 
-add_library(cpx
+add_library(cpx SHARED
     src/PluginFactory.cpp
     src/LibraryLoader.cpp
 )

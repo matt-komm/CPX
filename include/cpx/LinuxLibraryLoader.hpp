@@ -10,6 +10,8 @@
 namespace cpx
 {
 
+class PluginFactory;
+
 class LinuxLibraryLoader:
     public AbstractLibraryLoader
 {
@@ -17,8 +19,9 @@ class LinuxLibraryLoader:
         typedef void (*init_function_type)(void);
 
         std::map<std::string,void*> _loadedLibHandles;
+        PluginFactory* _pluginFactory;
     public:
-        LinuxLibraryLoader();
+        LinuxLibraryLoader(PluginFactory* pluginFactory);
         virtual ~LinuxLibraryLoader();
         virtual void loadLibrary(std::string file);
 };
