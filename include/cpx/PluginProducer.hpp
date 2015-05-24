@@ -76,7 +76,7 @@ class PluginProducer:
             return Interface::getInterfaceVersion();
         }
         
-        virtual Interface* create(Signature signature) const = 0;
+        virtual Interface* create(Signature signature=cpx::Signature<>()) const = 0;
         
         /*
         template<class PLUGINCLASS>

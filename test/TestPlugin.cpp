@@ -18,6 +18,12 @@ class TestPlugin:
             name = "huhluu";
         }
         
+        TestPlugin()
+        {
+            
+            
+        }
+        
         virtual std::string testString() const
         {
             return "TestPlugin";
