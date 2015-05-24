@@ -55,7 +55,7 @@ class Signature
         
 };
 
-template<class INTERFACE, class SIGNATURE>
+template<class INTERFACE, class SIGNATURE=cpx::Signature<>>
 class PluginProducer:
     public AbstractProducer
 {
