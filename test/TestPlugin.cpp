@@ -45,14 +45,11 @@ class TestPlugin:
         }
 };
 
-extern "C"
+
+cpx_init_module()
 {
-    int init(cpx::PluginFactory* pluginFactory)
-    {
-        static cpx::ConcretePluginProducer<TestPluginProducer,TestPlugin> producer(pluginFactory);
-        return 0;
-    }
+    cpx_register_plugin(TestPluginProducer,TestPlugin);
+    return 0;
 }
 
-//REGISTER_PLUGIN(TestPluginProducer,TestPlugin)
 

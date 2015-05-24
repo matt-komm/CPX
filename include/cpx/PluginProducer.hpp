@@ -133,9 +133,13 @@ class ConcretePluginProducer:
 };
     
 }
-/*
-#define REGISTER_PLUGIN(PRODUCER, PLUGINCLASS) \
-static PRODUCER::ConcretePluginProducer<PLUGINCLASS> _plugin ## PRODUCER ## PLUGINCLASS;
-*/
+
+#define cpx_init_module() \
+    extern "C" int init(cpx::PluginFactory* pluginFactory) 
+
+#define cpx_register_plugin(PRODUCER, PLUGINCLASS) \
+    static cpx::ConcretePluginProducer<PRODUCER,PLUGINCLASS> producer(pluginFactory)
+
+
 #endif
 
