@@ -76,7 +76,7 @@ class PluginProducer:
             return Interface::getInterfaceVersion();
         }
         
-        virtual Interface* create(Signature& signature) const = 0;
+        virtual Interface* create(Signature signature) const = 0;
         
         /*
         template<class PLUGINCLASS>
@@ -108,7 +108,7 @@ class ConcretePluginProducer:
             pluginFactory->registerProducer(this);
         }
 
-        virtual typename PRODUCER::Interface* create(typename PRODUCER::Signature& signature) const
+        virtual typename PRODUCER::Interface* create(typename PRODUCER::Signature signature) const
         {
             return signature.template create<PLUGINCLASS>();
         }

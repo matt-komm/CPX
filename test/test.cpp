@@ -18,12 +18,14 @@ int main()
         //std::cout<<"loaded plugins: "<<producer->toString()<<std::endl;
     }
     
-    /*
-    TestPluginProducer* pluginProducer = cpx::PluginFactory::getInstance().getProducer<TestPluginProducer>("TestPlugin");
+    
+    TestPluginProducer* pluginProducer = pl.getProducer<TestPluginProducer>("TestPlugin");
     std::cout<<pluginProducer->toString()<<std::endl;
-    TestPluginInterface* t = pluginProducer->create("blublb");
-    (void)t;
-    */
+    std::string s("blublb");
+    TestPluginInterface* t = pluginProducer->create(s);
+    std::cout<<s<<std::endl;
+    //(void)t;
+    
     return 0;
 }
 

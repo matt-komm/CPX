@@ -11,9 +11,11 @@ class TestPlugin:
 {
     protected:
     public:
-        TestPlugin(std::string name)
+        TestPlugin(std::string& name)
         {
+            
             std::cout<<name<<std::endl;
+            name = "huhluu";
         }
         
         virtual std::string testString() const

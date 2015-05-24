@@ -23,7 +23,7 @@ class TestPluginInterface
         virtual std::string testString() const = 0;
 };
 
-typedef cpx::PluginProducer<TestPluginInterface,cpx::Signature<std::string>> TestPluginProducer;
+typedef cpx::PluginProducer<TestPluginInterface,cpx::Signature<std::string&>> TestPluginProducer;
 
 
 
