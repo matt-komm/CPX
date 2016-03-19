@@ -1,18 +1,16 @@
 #ifndef __CPX_EXCEPTION_H__
 #define __CPX_EXCEPTION_H__
 
-#include "cpx/shared.h"
-
 #include <stdexcept>
 #include <sstream>
 
 
 namespace cpx
 {
-    cpx_shared static void expandArgs(std::stringstream& stream)
+    static void expandArgs(std::stringstream& stream)
     {
     }
-    template<class VALUE, class ...ARGS> cpx_shared static void expandArgs(std::stringstream& stream, VALUE value, ARGS... args)
+    template<class VALUE, class ...ARGS>  static void expandArgs(std::stringstream& stream, VALUE value, ARGS... args)
     {
         stream<<value;
         expandArgs(stream,args...);
