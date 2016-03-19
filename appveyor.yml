@@ -1,0 +1,21 @@
+branches:
+  only:
+    - master
+
+os: Visual Studio 2015
+
+# clone directory
+clone_folder: c:\projects\CPX
+
+platform: x64
+configuration: Release
+
+build:
+  project: RUNTESTS.vcxproj
+
+# scripts to run before build
+before_build:
+  - mkdir c:\projects\CPX\build
+  - cd c:\projects\CPX\build
+  - cmake -G "Visual Studio 14 2015 Win64" -D ENABLE_TEST=ON ..
+
