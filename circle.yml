@@ -1,0 +1,16 @@
+general:
+  branches:
+    only:
+      - master
+      
+dependencies:
+  pre:
+    - sudo apt-get install cmake
+test:
+  pre:
+    - mkdir build
+    - cd build
+    - cmake -D CMAKE_CXX_COMPILER=$COMPILER -D CMAKE_BUILD_TYPE=Debug -D ENABLE_TEST=ON ..
+  override:
+    - make && make runtests
+

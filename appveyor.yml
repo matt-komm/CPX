@@ -11,7 +11,7 @@ clone_folder: c:\projects\CPX
 before_build:
   - mkdir c:\projects\CPX\build
   - cd c:\projects\CPX\build
-  - cmake -D ENABLE_TEST=ON ..
+  - cmake -D CMAKE_BUILD_TYPE=Debug -D ENABLE_TEST=ON ..
 
 build_script:
   - cd c:\projects\CPX\build
@@ -19,4 +19,5 @@ build_script:
 
 test_script:
   - cd c:\projects\CPX\build
-  - msbuild test/runtests.sln
+  - msbuild test\runtests.vcxproj
+
