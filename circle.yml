@@ -8,9 +8,11 @@ dependencies:
     - sudo apt-get install cmake
 test:
   pre:
-    - ls
+    - ll -lh
     - mkdir build
     - cd build
+    - pwd
+    - ll -lh
     - cmake -D CMAKE_BUILD_TYPE=Debug -D ENABLE_TEST=ON ..
   override:
     - make && make runtests
