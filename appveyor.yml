@@ -7,7 +7,6 @@ os: Visual Studio 2015
 # clone directory
 clone_folder: c:\projects\CPX
 
-platform: x64
 configuration: Release
 
 build:
