@@ -21,3 +21,11 @@ test_script:
   - cd c:\projects\CPX\build
   - msbuild test\runtests.vcxproj
 
+notifications:
+  - provider: Email
+    to:
+      - mkomm@cern.ch
+    subject: 'Build {{status}}'
+    message: "{{message}}, {{commitId}}"
+    on_build_status_changed: true
+    
