@@ -58,7 +58,7 @@ public:
     os << "  at " << _location << endl;
     os << "    an exception was expected" << endl;
     os << "    no exception was thrown";
-    throw os.str().c_str();
+    return os.str().c_str();
   }
 
   string location() { return _location; }
