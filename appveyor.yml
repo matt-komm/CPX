@@ -11,7 +11,7 @@ platform: x64
 configuration: Release
 
 build:
-  - cmake --build . --target ALL_BUILD --config Release
+  project: test/runtests.vcxproj
 
 # scripts to run before build
 before_build:

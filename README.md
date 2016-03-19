@@ -1,15 +1,12 @@
 # CPX
 Slim C++ Plugin System for Linux and Windows
+
+Build | status
 -------------------
-Linux status
+Linux | [![Build Status](https://travis-ci.org/matt-komm/CPX.svg?branch=master)](https://travis-ci.org/matt-komm/CPX)
+Window | ?
 
-[![Build Status](https://travis-ci.org/matt-komm/CPX.svg?branch=master)](https://travis-ci.org/matt-komm/CPX)
-
-Window status
-
-?
-
-##Example
+##Getting started
 -------------------
 *TODO*
 
