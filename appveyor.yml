@@ -11,11 +11,12 @@ platform: x64
 configuration: Release
 
 build:
-  project: c:\projects\CPX\build\test\runtests.vcxproj
+  project: c:\projects\CPX\build\CPX.sln
 
 # scripts to run before build
 before_build:
   - mkdir c:\projects\CPX\build
   - cd c:\projects\CPX\build
   - cmake -D ENABLE_TEST=ON ..
+
 
