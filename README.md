@@ -1,4 +1,7 @@
-# CPX: Slim C++ Plugin System for Linux and Windows
+# CPX
+
+Slim **C**++ **P**lugin System for Linu**x** & Windows
+
 
 Build | Status
 ----- | ------
