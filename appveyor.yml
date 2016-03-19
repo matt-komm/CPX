@@ -5,8 +5,6 @@ branches:
 environment:
   matrix:
     - os: Visual Studio 2015
-    - os: Visual Studio 2013
-    - os: Cygwin
 
 clone_folder: c:\projects\CPX
 
@@ -15,8 +13,11 @@ before_build:
   - cd c:\projects\CPX\build
   - cmake -D ENABLE_TEST=ON ..
 
-script:
+build_script:
   - cd c:\projects\CPX\build
   - msbuild CPX.sln
   - tree c:\projects\CPX\build
 
+test_script:
+  - cd c:\projects\CPX\build
+  - c:\projects\CPX\build\test\cpx-test
