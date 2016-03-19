@@ -11,11 +11,11 @@ platform: x64
 configuration: Release
 
 build:
-  project: test/runtests.vcxproj
+  project: c:\projects\CPX\build\test\runtests.vcxproj
 
 # scripts to run before build
 before_build:
   - mkdir c:\projects\CPX\build
   - cd c:\projects\CPX\build
-  - cmake -G "Visual Studio 14 2015 Win64" -D ENABLE_TEST=ON ..
+  - cmake -D ENABLE_TEST=ON ..
 
