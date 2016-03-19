@@ -1,6 +1,7 @@
 #include "cpx/PluginFactory.hpp"
 
 #include <sstream>
+#include <iostream>
 
 namespace cpx
 {
@@ -12,17 +13,21 @@ PluginFactory::PluginFactory():
 
 void PluginFactory::registerProducer(AbstractProducer* producer)
 {
+    if (_producers.find(producer->getPluginName())!=_producers.end())
+    {
+        cpx_throw("Plugin ",producer->toString()," already registered");
+    }
     _producers[producer->getPluginName()]=producer;
 }
 
 std::vector<std::string> PluginFactory::getRegisteredPluginNames() const
 {
-    std::vector<std::string> keys(_producers.size());
+    std::vector<std::string> keys;
     for (std::unordered_map<std::string,AbstractProducer*>::const_iterator it = _producers.cbegin(); it!=_producers.cend(); ++it)
     {
-        keys[std::distance(it,_producers.begin())]=it->first;
+        keys.push_back(it->first);
     }
-    return keys;
+    return std::move(keys);
 }
 
 std::string PluginFactory::toString() const
@@ -33,7 +38,7 @@ std::string PluginFactory::toString() const
     {
         ss << name << " ("<<getProducer(name)->toString()<<std::endl;
     }
-    return ss.str();
+    return std::move(ss.str());
 }
 
 void PluginFactory::loadLibrary(const std::string& path)

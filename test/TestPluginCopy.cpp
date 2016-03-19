@@ -6,7 +6,7 @@
 #include <iostream>
 #include <memory>
 
-class TestPlugin:
+class TestPluginCopy:
     public TestPluginInterface
 {
     protected:
@@ -14,10 +14,11 @@ class TestPlugin:
     public:
         cpx_setup_plugin("TestPlugin",1,0,"TestPlugin Description")
     
-        TestPlugin(std::string& testArgument):
+        TestPluginCopy(std::string& testArgument):
             _testArgument(testArgument)
         {
         }
+        
         
         virtual std::string testArgument() const
         {
@@ -29,7 +30,7 @@ class TestPlugin:
 
 cpx_init_module()
 {
-    cpx_register_plugin(TestPluginProducer,TestPlugin);
+    cpx_register_plugin(TestPluginProducer,TestPluginCopy);
 }
 
 

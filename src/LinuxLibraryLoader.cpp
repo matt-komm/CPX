@@ -33,7 +33,10 @@ void LinuxLibraryLoader::loadLibrary(std::string file)
             cpx_throw("Error while initializing file: '",file,"': ",dlerror());
         }
         (*initFct)(_pluginFactory);
-        
+    }
+    else
+    {
+        cpx_throw("Plugin file ",file," already loaded");
     }
 }
 

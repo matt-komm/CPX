@@ -6,15 +6,15 @@
 #include <iostream>
 #include <memory>
 
-class TestPlugin:
+class TestPluginOther:
     public TestPluginInterface
 {
     protected:
         std::string _testArgument;
     public:
-        cpx_setup_plugin("TestPlugin",1,0,"TestPlugin Description")
+        cpx_setup_plugin("TestPluginOther",1,0,"TestPluginOther Description")
     
-        TestPlugin(std::string& testArgument):
+        TestPluginOther(std::string& testArgument):
             _testArgument(testArgument)
         {
         }
@@ -29,7 +29,7 @@ class TestPlugin:
 
 cpx_init_module()
 {
-    cpx_register_plugin(TestPluginProducer,TestPlugin);
+    cpx_register_plugin(TestPluginProducer,TestPluginOther);
 }
 
 
