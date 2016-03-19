@@ -5,8 +5,7 @@ include(detectOS.cmake)
 add_definitions(-DOS_${OSNAME})
 
 
-set(CMAKE_CXX_FLAGS "-pedantic -std=c++0x" ${CMAKE_CXX_FLAGS} )
-#set(CMAKE_INSTALL_PREFIX ${PROJECT_BINARY_DIR}/release)
+set(CMAKE_CXX_FLAGS "-Wextra -Wall -pedantic -std=c++0x -Wno-unused-parameter -Wno-missing-braces ${CMAKE_CXX_FLAGS}" )
 
 include_directories(${PROJECT_SOURCE_DIR}/include ${PROJECT_SOURCE_DIR}/src)
 
@@ -27,20 +26,7 @@ if (ENABLE_TEST)
 endif (ENABLE_TEST)
 
 
-file(
-    GLOB headers 
-    "${PROJECT_SOURCE_DIR}/include/cpx/*.hpp"
-)
-install(
-    FILES ${headers}
-    DESTINATION include/cpx
-)
 
-
-#install(
-#    TARGETS cpx
-#    DESTINATION libs
-#)
 
 
 

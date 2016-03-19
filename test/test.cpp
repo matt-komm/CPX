@@ -7,24 +7,36 @@
 
 int main()
 {
-    cpx::PluginFactory pl;
-    std::cout<<"start..."<<&pl<<std::endl;
-    pl.loadLibrary("test/test-plugin.cpx");
-    
-    
-    for (const std::string& pName: pl.getRegisteredPluginNames())
+    cpx::PluginFactory pluginFactory;
+
+    try
     {
-        //cpx::AbstractProducer* producer = pl.getProducer<cpx::AbstractProducer>(pName);
-        //std::cout<<"loaded plugins: "<<producer->toString()<<std::endl;
+        pluginFactory.loadLibrary("test/test-plugin.cpx");
+    } 
+    catch (const std::runtime_error& e)
+    {
+        std::cerr << e.what() <<std::endl;
+        return 1;
     }
     
     
-    TestPluginProducer* pluginProducer = pl.getProducer<TestPluginProducer>("TestPlugin");
-    std::cout<<pluginProducer->toString()<<std::endl;
-    std::string s("blublb");
+    if (pluginFactory.getRegisteredPluginNames().size()!=1)
+    {
+        std::cerr << "Error: plugin not registered" <<std::endl;
+        return 1;
+    }
+    
+    
+    std::cout << pluginFactory.toString();
+    
+    TestPluginProducer* pluginProducer = pluginFactory.getProducer<TestPluginProducer>("TestPlugin");
+    
+    
+    
+    //std::cout<<pluginProducer->toString()<<std::endl;
+    std::string s("Test Plugin Argument");
     TestPluginInterface* t = pluginProducer->create(s);
-    std::cout<<s<<std::endl;
-    //(void)t;
+    (void)t;
     
     return 0;
 }

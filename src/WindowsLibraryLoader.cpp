@@ -16,8 +16,7 @@ WindowsLibraryLoader::WindowsLibraryLoader(cpx::PluginFactory* pluginFactory):
 
 void WindowsLibraryLoader::loadLibrary(std::string file)
 {
-    typedef int (__cdecl *InitFct)(cpx::PluginFactory*); 
-    std::cout<<"loading lib: "<<file<<std::endl;
+    typedef void (__cdecl *InitFct)(cpx::PluginFactory*);
     if (_loadedLibHandles.find(file)==_loadedLibHandles.end())
     {
         HINSTANCE lib_handle = LoadLibrary(file.c_str());
@@ -29,7 +28,7 @@ void WindowsLibraryLoader::loadLibrary(std::string file)
             if(dwLastError != 0)
             {
                 FormatMessage(
-                    FORMAT_MESSAGE_FROM_SYSTEM,                 // It´s a system error
+                    FORMAT_MESSAGE_FROM_SYSTEM,                 // It's a system error
                     NULL,                                      // No string to be formatted needed
                     dwLastError,                               // Hey Windows: Please explain this error!
                     MAKELANGID(LANG_NEUTRAL,SUBLANG_DEFAULT),  // Do it in the standard language
@@ -49,7 +48,7 @@ void WindowsLibraryLoader::loadLibrary(std::string file)
             if(dwLastError != 0)
             {
                 FormatMessage(
-                    FORMAT_MESSAGE_FROM_SYSTEM,                 // It´s a system error
+                    FORMAT_MESSAGE_FROM_SYSTEM,                 // It's a system error
                     NULL,                                      // No string to be formatted needed
                     dwLastError,                               // Hey Windows: Please explain this error!
                     MAKELANGID(LANG_NEUTRAL,SUBLANG_DEFAULT),  // Do it in the standard language

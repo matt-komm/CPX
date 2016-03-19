@@ -13,7 +13,7 @@ LinuxLibraryLoader::LinuxLibraryLoader(PluginFactory* pluginFactory):
 
 void LinuxLibraryLoader::loadLibrary(std::string file)
 {
-    typedef int (*InitFct)(cpx::PluginFactory*);
+    typedef void (*InitFct)(cpx::PluginFactory*);
     if (_loadedLibHandles.find(file)==_loadedLibHandles.end())
     {
         void* lib_handle;
@@ -43,7 +43,6 @@ LinuxLibraryLoader::~LinuxLibraryLoader()
     {
         dlclose(handle.second);
     }
-    //
 }
 
 }

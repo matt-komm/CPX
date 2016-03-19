@@ -1,5 +1,5 @@
-#ifndef __CPPPS_TESTPLUGININTERFACE_H__
-#define __CPPPS_TESTPLUGININTERFACE_H__
+#ifndef __CPX_TESTPLUGININTERFACE_H__
+#define __CPX_TESTPLUGININTERFACE_H__
 
 #include "cpx/PluginProducer.hpp"
 #include "cpx/Version.hpp"
@@ -10,22 +10,12 @@ class TestPluginInterface
 {
     protected:
     public:
-        static std::string getInterfaceName()
-        {
-            return "TestPluginInterface";
-        }
+        cpx_setup_interface("TestPluginInterface",0,0)
         
-        static cpx::Version getInterfaceVersion()
-        {
-            return cpx::Version(0,0);
-        }
-        
-        virtual std::string testString() const = 0;
+        virtual std::string testArgument() const = 0;
 };
 
 typedef cpx::PluginProducer<TestPluginInterface,cpx::Signature<std::string&>> TestPluginProducer;
-
-
 
 #endif
 

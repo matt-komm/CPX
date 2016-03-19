@@ -17,8 +17,6 @@ struct Builder
     template<class PLUGINCLASS, class TUPLE, class... CARGS> PLUGINCLASS* create(TUPLE& tuple, CARGS... args)
     {
         typedef typename std::tuple_element<N-1,TUPLE>::type ARG;
-        //auto i = std::get<N-1>(tuple);
-        //return nullptr;
         return Builder<N-1>().template create<PLUGINCLASS,TUPLE,CARGS...,ARG>(tuple,args...,std::get<N-1>(tuple));
     }
 };
@@ -28,7 +26,6 @@ struct Builder<0>
 {
     template<class PLUGINCLASS, class TUPLE, class... CARGS> PLUGINCLASS* create(TUPLE& tuple, CARGS... args)
     {
-        //return nullptr;
         return new PLUGINCLASS(args...);
     }
 };
@@ -78,19 +75,6 @@ class PluginProducer:
         
         virtual Interface* create(Signature signature=cpx::Signature<>()) const = 0;
         
-        /*
-        template<class PLUGINCLASS>
-        class ConcretePluginProducer:
-            public PluginProducer<INTERFACE,ARGS...>
-        {
-            public:
-                ConcretePluginProducer()
-                { 
-                   
-                }
-                
-        };
-        */
 };
 
 
@@ -103,8 +87,6 @@ class ConcretePluginProducer:
     public:
         ConcretePluginProducer(PluginFactory* pluginFactory)
         {
-            std::cout<<"register plugin "<<this<<" in factory "<<pluginFactory<<std::endl;
-            //PluginFactory& f = PluginFactory::getInstance(); 
             pluginFactory->registerProducer(this);
         }
 
@@ -119,23 +101,31 @@ class ConcretePluginProducer:
         }
         virtual Version getPluginVersion() const
         { 
-            return Version(0,0);
+            return PLUGINCLASS::getVersion();
         }
         virtual std::string getPluginDescription() const
         {
-            return "";
+            return PLUGINCLASS::getDescription();
         }
 
         virtual ~ConcretePluginProducer()
         {
-            std::cout<<"destroy producer "<<this<<std::endl;
         } 
 };
     
 }
 
+#define cpx_setup_interface(NAME,MAJOR,MINOR) \
+    static std::string getInterfaceName() { return NAME; } \
+    static cpx::Version getInterfaceVersion() { return cpx::Version(MAJOR,MINOR); }
+    
+#define cpx_setup_plugin(NAME,MAJOR,MINOR,DESCRIPTION) \
+    static std::string getPluginName() { return NAME; } \
+    static cpx::Version getVersion() { return cpx::Version(MAJOR,MINOR); } \
+    static std::string getDescription() { return DESCRIPTION; }
+
 #define cpx_init_module() \
-    extern "C" int init(cpx::PluginFactory* pluginFactory) 
+    extern "C" void init(cpx::PluginFactory* pluginFactory) 
 
 #define cpx_register_plugin(PRODUCER, PLUGINCLASS) \
     static cpx::ConcretePluginProducer<PRODUCER,PLUGINCLASS> producer(pluginFactory)

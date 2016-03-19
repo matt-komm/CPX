@@ -14,19 +14,27 @@ namespace cpx
 class PluginFactory
 {
     protected:
-        AbstractLibraryLoader* _libLoader;
-        std::unordered_map<std::string,AbstractProducer*> _producers;
+        cpx::AbstractLibraryLoader* _libLoader;
+        std::unordered_map<std::string,cpx::AbstractProducer*> _producers;
     
         
     public:
         PluginFactory();
 
-        void registerProducer(AbstractProducer* producer);
-        std::vector<std::string> getRegisteredPluginNames();
-        template<class PRODUCER> PRODUCER* getProducer(const std::string& name)
+        void registerProducer(cpx::AbstractProducer* producer);
+        std::vector<std::string> getRegisteredPluginNames() const;
+        
+        inline bool hasPluginRegistered(const std::string& name) const
         {
-            std::unordered_map<std::string,AbstractProducer*>::iterator it = _producers.find(name);
-            if (it!=_producers.end())
+            return _producers.find(name)!=_producers.end();
+        }
+        
+        std::string toString() const;
+        
+        template<class PRODUCER=cpx::AbstractProducer> PRODUCER* getProducer(const std::string& name) const
+        {
+            std::unordered_map<std::string,cpx::AbstractProducer*>::const_iterator it = _producers.find(name);
+            if (it!=_producers.cend())
             {
                 PRODUCER* producer = dynamic_cast<PRODUCER*>(it->second);
                 if (producer)

@@ -16,7 +16,6 @@ class LinuxLibraryLoader:
     public AbstractLibraryLoader
 {
     protected:
-        typedef void (*init_function_type)(void);
 
         std::map<std::string,void*> _loadedLibHandles;
         PluginFactory* _pluginFactory;

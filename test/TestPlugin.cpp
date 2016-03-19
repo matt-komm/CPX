@@ -10,46 +10,30 @@ class TestPlugin:
     public TestPluginInterface
 {
     protected:
+        std::string _testArgument;
     public:
-        TestPlugin(std::string& name)
+        cpx_setup_plugin("TestPlugin",1,0,"TestPlugin Description")
+    
+        TestPlugin(std::string& testArgument):
+            _testArgument(testArgument)
         {
-            
-            std::cout<<name<<std::endl;
-            name = "huhluu";
         }
         
         TestPlugin()
         {
-            
-            
         }
         
-        virtual std::string testString() const
+        virtual std::string testArgument() const
         {
-            return "TestPlugin";
+            return _testArgument;
         }
         
-        static std::string getPluginName()
-        {
-            return "TestPlugin";
-        }
-        
-        static cpx::Version getVersion()
-        {
-            return cpx::Version(1,0);
-        }
-        
-        static std::string getDescription()
-        {
-            return "blub";
-        }
 };
 
 
 cpx_init_module()
 {
     cpx_register_plugin(TestPluginProducer,TestPlugin);
-    return 0;
 }
 
 
