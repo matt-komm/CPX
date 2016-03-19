@@ -16,8 +16,7 @@ before_build:
 build_script:
   - cd c:\projects\CPX\build
   - msbuild CPX.sln
-  - tree c:\projects\CPX\build
 
 test_script:
   - cd c:\projects\CPX\build
-  - c:\projects\CPX\build\test\cpx-test
+  - test\cpx-test

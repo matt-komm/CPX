@@ -8,7 +8,7 @@
 namespace cpx
 {
 
-class AbstractLibraryLoader
+class cpx_shared AbstractLibraryLoader
 {
     protected:
     public:

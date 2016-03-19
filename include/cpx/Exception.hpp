@@ -7,14 +7,17 @@
 
 namespace cpx
 {
-    static void expandArgs(std::stringstream& stream)
+    static void expandArgs(std::stringstream&)
     {
     }
+
     template<class VALUE, class ...ARGS>  static void expandArgs(std::stringstream& stream, VALUE value, ARGS... args)
     {
         stream<<value;
         expandArgs(stream,args...);
     }
+    
+
 
 }
 
