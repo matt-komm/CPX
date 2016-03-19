@@ -1,6 +1,8 @@
 #ifndef __CPX_ABSTRACTLIBRARYLOADER_H__
 #define __CPX_ABSTRACTLIBRARYLOADER_H__
 
+#include "cpx/shared.h"
+
 #include <string>
 
 namespace cpx

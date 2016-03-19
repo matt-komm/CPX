@@ -4,6 +4,7 @@
 #include "cpx/AbstractProducer.hpp"
 #include "cpx/LibraryLoader.hpp"
 #include "cpx/Exception.hpp"
+#include "cpx/shared.h"
 
 #include <unordered_map>
 #include <vector>
@@ -11,7 +12,7 @@
 namespace cpx
 {
 
-class PluginFactory
+class cpx_shared PluginFactory
 {
     protected:
         cpx::AbstractLibraryLoader* _libLoader;

@@ -2,6 +2,7 @@
 #define __CPX_WINDOWSLIBRARYLOADER_H__
 
 #include "cpx/AbstractLibraryLoader.hpp"
+#include "cpx/shared.h"
 
 #include <string>
 #include <map>
@@ -14,7 +15,7 @@ namespace cpx
 
 class PluginFactory;
 
-class WindowsLibraryLoader:
+class cpx_shared WindowsLibraryLoader:
     public AbstractLibraryLoader
 {
     protected:

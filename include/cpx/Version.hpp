@@ -1,13 +1,15 @@
 #ifndef __CPX_VERSION_H__
 #define __CPX_VERSION_H__
 
+#include "cpx/shared.h"
+
 #include <string>
 #include <sstream>
 
 namespace cpx
 {
 
-struct Version
+class cpx_shared Version
 {
     protected:
         unsigned int _vmajor;

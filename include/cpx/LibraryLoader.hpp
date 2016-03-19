@@ -2,13 +2,14 @@
 #define __CPX_LIBRARYLOADER_H__
 
 #include "cpx/AbstractLibraryLoader.hpp"
+#include "cpx/shared.h"
 
 namespace cpx
 {
 
 //hides casts from the compiler
 template<typename INPTR, typename OUTPTR>
-class SharedMemory
+class cpx_shared SharedMemory
 {
     private:
         union Memory

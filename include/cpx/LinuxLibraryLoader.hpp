@@ -2,6 +2,7 @@
 #define __CPX_LINUXLIBRARYLOADER_H__
 
 #include "cpx/AbstractLibraryLoader.hpp"
+#include "cpx/shared.h"
 
 #include <string>
 #include <map>
@@ -12,7 +13,7 @@ namespace cpx
 
 class PluginFactory;
 
-class LinuxLibraryLoader:
+class cpx_shared LinuxLibraryLoader:
     public AbstractLibraryLoader
 {
     protected:

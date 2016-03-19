@@ -2,6 +2,7 @@
 #define __CPX_ABSTRACTPRODUCER_H__
 
 #include "cpx/Version.hpp"
+#include "cpx/shared.h"
 
 #include <string>
 #include <sstream>
@@ -9,7 +10,7 @@
 namespace cpx
 {
 
-class AbstractProducer
+class cpx_shared AbstractProducer
 {
     protected:
     public:
