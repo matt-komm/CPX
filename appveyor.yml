@@ -13,14 +13,13 @@ clone_folder: c:\projects\CPX
 
 configuration: Release
 
-build:
-  project: c:\projects\CPX\build\CPX.sln
-
-# scripts to run before build
-before_build:
+before_script:
   - mkdir c:\projects\CPX\build
   - cd c:\projects\CPX\build
   - cmake -D ENABLE_TEST=ON ..
 
-after_build:
+script:
+  - cd c:\projects\CPX\build
+  - msbuild CPX.sln
   - tree c:\projects\CPX\build
+
