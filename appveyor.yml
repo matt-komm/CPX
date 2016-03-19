@@ -8,12 +8,9 @@ environment:
     - os: Visual Studio 2013
     - os: Cygwin
 
-# clone directory
 clone_folder: c:\projects\CPX
 
-configuration: Release
-
-before_script:
+before_build:
   - mkdir c:\projects\CPX\build
   - cd c:\projects\CPX\build
   - cmake -D ENABLE_TEST=ON ..
