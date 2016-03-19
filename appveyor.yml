@@ -2,8 +2,8 @@ branches:
   only:
     - master
 
-matrix:
-  include:
+environment:
+  matrix:
     - os: Visual Studio 2015
     - os: Visual Studio 2013
     - os: Cygwin
