@@ -4,10 +4,13 @@ cmake_minimum_required(VERSION 2.8.3)
 include(detectOS.cmake)
 add_definitions(-DOS_${OSNAME})
 
-#activate C++11 support under Linux. Windows uses it by default.
+#activate C++11 support under Linux & OSX. Windows uses it by default.
 if (OSNAME STREQUAL "LINUX")
     set(CMAKE_CXX_FLAGS "-std=c++0x ${CMAKE_CXX_FLAGS}")
 endif (OSNAME STREQUAL "LINUX")
+if (OSNAME STREQUAL "MACOSX")
+    set(CMAKE_CXX_FLAGS "-std=c++0x ${CMAKE_CXX_FLAGS}")
+endif (OSNAME STREQUAL "MACOSX")
 
 include_directories(${PROJECT_SOURCE_DIR}/include ${PROJECT_SOURCE_DIR}/src)
 
