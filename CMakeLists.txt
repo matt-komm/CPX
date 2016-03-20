@@ -14,6 +14,7 @@ include_directories(${PROJECT_SOURCE_DIR}/include ${PROJECT_SOURCE_DIR}/src)
 OPTION(ENABLE_TEST "Build tests" ON)
 
 if (ENABLE_TEST)
+    enable_testing()
     # add exta warnings
     if (OSNAME STREQUAL "LINUX")
         set(CMAKE_CXX_FLAGS "-Wextra -Wall -pedantic -Wno-unused-parameter ${CMAKE_CXX_FLAGS}" )

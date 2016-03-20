@@ -52,9 +52,8 @@ before_script:
   - cmake -G"Unix Makefiles" -D CMAKE_CXX_COMPILER=$COMPILER -D CMAKE_BUILD_TYPE=Debug -D ENABLE_TEST=ON -D CMAKE_INSTALL_PREFIX=../release ..
 
 script: 
-  - make && make install
-  - cd ../release/lib
-  - LD_LIBRARY_PATH=.:$LD_LIBRARY_PATH && ./cpx-test
+  - make
+  - ctest -V
   
 branches:
   only:

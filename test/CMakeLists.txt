@@ -37,3 +37,10 @@ install(
     LIBRARY DESTINATION lib/test
     ARCHIVE DESTINATION lib/test
 )
+
+
+add_test(
+    NAME cpx-testing 
+    COMMAND cpx-test
+)
+

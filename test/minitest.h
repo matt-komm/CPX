@@ -129,9 +129,9 @@ void assert_eq(const char* lhs, const char* rhs, string loc) { assert_eq(string(
   {bool mt_ok = true;\
   std::cout << #test << "..." << std::flush;\
   try { test(); }\
-  catch (std::exception& e) { mt_ok = false; std::cout << "failed" << std::endl << e.what(); } \
-  catch (const char* msg) { mt_ok = false; std::cout << "failed" << std::endl << msg; } \
-  catch (...) { mt_ok = false; std::cout << "failed"; }\
+  catch (std::exception& e) { mt_ok = false; std::cout << "failed" << std::endl << e.what(); return 1;} \
+  catch (const char* msg) { mt_ok = false; std::cout << "failed" << std::endl << msg; return 1;} \
+  catch (...) { mt_ok = false; std::cout << "failed"; return 1;}\
   if (mt_ok) { std::cout << "ok"; }\
   std::cout << std::endl << std::flush;\
   }\

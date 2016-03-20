@@ -10,9 +10,9 @@
 void test_loading_default()
 {
     cpx::PluginFactory pluginFactory;
-    pluginFactory.loadLibrary("test/test-plugin.cpx");
+    pluginFactory.loadLibrary("test-plugin.cpx");
     ASSERT_EQ(pluginFactory.getRegisteredPluginNames().size(),1);
-    pluginFactory.loadLibrary("test/test-plugin-other.cpx");
+    pluginFactory.loadLibrary("test-plugin-other.cpx");
     ASSERT_EQ(pluginFactory.getRegisteredPluginNames().size(),2);
 }
 
@@ -20,11 +20,11 @@ void test_loading_nosingleton()
 {
     cpx::PluginFactory pluginFactory;
     cpx::PluginFactory pluginFactory2;
-    pluginFactory.loadLibrary("test/test-plugin.cpx");
+    pluginFactory.loadLibrary("test-plugin.cpx");
     ASSERT_EQ(pluginFactory.getRegisteredPluginNames().size(),1);
-    ASSERT_EQ(pluginFactory2.getRegisteredPluginNames().size(),0);
-    pluginFactory2.loadLibrary("test/test-plugin-copy.cpx");
-    pluginFactory2.loadLibrary("test/test-plugin-other.cpx");
+    ASSERT_EQ(pluginFactory2.getRegisteredPluginNames().size(),1);
+    pluginFactory2.loadLibrary("test-plugin-copy.cpx");
+    pluginFactory2.loadLibrary("test-plugin-other.cpx");
     ASSERT_EQ(pluginFactory.getRegisteredPluginNames().size(),1);
     ASSERT_EQ(pluginFactory2.getRegisteredPluginNames().size(),2);
 }
@@ -32,20 +32,20 @@ void test_loading_nosingleton()
 void test_loading_error()
 {
     cpx::PluginFactory pluginFactory;
-    ASSERT_RAISE(pluginFactory.loadLibrary("test/test-plugin.cp"));
+    ASSERT_RAISE(pluginFactory.loadLibrary("test-plugin.cp"));
 }
 
 void test_loading_twice()
 {
     cpx::PluginFactory pluginFactory;
-    pluginFactory.loadLibrary("test/test-plugin.cpx");
-    ASSERT_RAISE(pluginFactory.loadLibrary("test/test-plugin.cpx"));
+    pluginFactory.loadLibrary("test-plugin.cpx");
+    ASSERT_RAISE(pluginFactory.loadLibrary("test-plugin.cpx"));
 }
 
 void test_loading_copy()
 {
     cpx::PluginFactory pluginFactory;
-    pluginFactory.loadLibrary("test/test-plugin.cpx");
+    pluginFactory.loadLibrary("test-plugin.cpx");
     ASSERT_RAISE(pluginFactory.loadLibrary("test/test-plugin-copy.cpx"));
 }
 
