@@ -15,7 +15,7 @@ before_build:
 
 build_script:
   - cd c:\projects\CPX\build
-  - cmake --build . --config Default
+  - cmake --build . --config Debug
 
 test_script:
   - cd c:\projects\CPX\build
