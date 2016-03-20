@@ -7,8 +7,9 @@
 
 namespace cpx
 {
-    static void expandArgs(std::stringstream&)
+    template<class VALUE> static void expandArgs(std::stringstream& stream, VALUE value)
     {
+        stream<<value;
     }
 
     template<class VALUE, class ...ARGS>  static void expandArgs(std::stringstream& stream, VALUE value, ARGS... args)
