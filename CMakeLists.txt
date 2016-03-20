@@ -36,4 +36,11 @@ if (OSNAME STREQUAL "LINUX")
     target_link_libraries(cpx dl)
 endif (OSNAME STREQUAL "LINUX")
 
+install(
+    TARGETS cpx
+    RUNTIME DESTINATION bin
+    LIBRARY DESTINATION lib
+    ARCHIVE DESTINATION lib
+)
+
 

@@ -11,14 +11,15 @@ clone_folder: c:\projects\CPX
 before_build:
   - mkdir c:\projects\CPX\build
   - cd c:\projects\CPX\build
-  - cmake -D CMAKE_BUILD_TYPE=Debug -D ENABLE_TEST=ON ..
+  - cmake -G "NMake Makefiles" -D CMAKE_BUILD_TYPE=Debug -D ENABLE_TEST=ON -D CMAKE_INSTALL_PREFIX=c:\projects\CPX\release ..
 
 build_script:
   - cd c:\projects\CPX\build
-  - msbuild CPX.sln
+  - nmake install
 
 test_script:
-  - cd c:\projects\CPX\build
+  - cd c:\projects\CPX\release\lib
+  - ..\bin\cpx-test
 
 notifications:
   - provider: Email
