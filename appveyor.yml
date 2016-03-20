@@ -22,11 +22,4 @@ test_script:
   - cd c:\projects\CPX\build
   - ctest -V
 
-notifications:
-  - provider: Email
-    to:
-      - mkomm@cern.ch
-    subject: 'Build {{status}}'
-    message: "{{message}}, {{commitId}}"
-    on_build_status_changed: true
     

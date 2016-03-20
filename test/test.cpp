@@ -22,7 +22,7 @@ void test_loading_nosingleton()
     cpx::PluginFactory pluginFactory2;
     pluginFactory.loadLibrary("test-plugin.cpx");
     ASSERT_EQ(pluginFactory.getRegisteredPluginNames().size(),1);
-    ASSERT_EQ(pluginFactory2.getRegisteredPluginNames().size(),1);
+    ASSERT_EQ(pluginFactory2.getRegisteredPluginNames().size(),0);
     pluginFactory2.loadLibrary("test-plugin-copy.cpx");
     pluginFactory2.loadLibrary("test-plugin-other.cpx");
     ASSERT_EQ(pluginFactory.getRegisteredPluginNames().size(),1);
