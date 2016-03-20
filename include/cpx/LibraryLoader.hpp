@@ -44,6 +44,19 @@ namespace cpx
 }
 
 #endif
+
+#ifdef OS_MACOSX
+#define LIBLOADERHEADERFOUND
+
+#include "cpx/LinuxLibraryLoader.hpp"
+namespace cpx
+{
+    typedef LinuxLibraryLoader LibraryLoader;
+}
+
+#endif
+
+
 #ifdef OS_WINDOWS
 #define LIBLOADERHEADERFOUND
 

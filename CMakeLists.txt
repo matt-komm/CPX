@@ -40,6 +40,10 @@ if (OSNAME STREQUAL "LINUX")
     target_link_libraries(cpx dl)
 endif (OSNAME STREQUAL "LINUX")
 
+if (OSNAME STREQUAL "MACOSX")
+    target_link_libraries(cpx dl)
+endif (OSNAME STREQUAL "MACOSX")
+
 install(
     TARGETS cpx
     RUNTIME DESTINATION bin

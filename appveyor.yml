@@ -9,17 +9,20 @@ environment:
 clone_folder: c:\projects\CPX
 
 before_build:
-  - mkdir c:\projects\CPX\build
-  - cd c:\projects\CPX\build
-  - cmake -D CMAKE_BUILD_TYPE=Debug -D ENABLE_TEST=ON -D CMAKE_INSTALL_PREFIX=c:\projects\CPX\release ..
+  - ps: |
+        mkdir c:\projects\CPX\build
+        cd c:\projects\CPX\build
+        cmake -D CMAKE_BUILD_TYPE=Debug -D ENABLE_TEST=ON -D CMAKE_INSTALL_PREFIX=c:\projects\CPX\release ..
 
 build_script:
-  - cd c:\projects\CPX\build
-  - cmake --build . --config Debug
+  - ps: |
+        cd c:\projects\CPX\build
+        cmake --build . --config Debug
 
 test_script:
-  - cd c:\projects\CPX\build
-  - ctest -V -C Debug
+  - ps: |
+        cd c:\projects\CPX\build
+        ctest -V -C Debug
 
     
 notifications:
