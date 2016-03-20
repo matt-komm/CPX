@@ -15,11 +15,10 @@ before_build:
 
 build_script:
   - cd c:\projects\CPX\build
-  - msbuild CPX.sln
-
+  - cmake --build . --config Default
 
 test_script:
   - cd c:\projects\CPX\build
-  - ctest -V
+  - ctest -V -C Debug
 
     
