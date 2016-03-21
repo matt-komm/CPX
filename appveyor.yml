@@ -18,10 +18,12 @@ build_script:
   - cmd: |
         cd c:\projects\CPX\build
         cmake --build . --config Debug
+        
+test: off
 
 test_script:
   - cmd: |
         cd c:\projects\CPX\build\test\Debug
-        cpx-test.exe
+        RunAs.exe /user:Administrator cpx-test.exe
 
     
