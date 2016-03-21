@@ -1,7 +1,8 @@
-//Copyright (c) 2013 Brian J. Cardiff under MIT License
+//original code: Copyright (c) 2013 Brian J. Cardiff under MIT License
+//additional fixes by Matthias Komm
 
-#ifndef MINI_TEST
-#define MINI_TEST
+#ifndef _MINI_TEST_H_
+#define _MINI_TEST_H_
 
 #include <iostream>
 #include <sstream>
@@ -19,9 +20,9 @@ public:
   ValueExpectationException(T actual, T expected, string loc) :
     _actual(actual), _expected(expected), _location(loc) { }
 
-  virtual ~ValueExpectationException() throw() { }
+  virtual ~ValueExpectationException() noexcept { }
 
-  virtual const char* what() const throw() {
+  virtual const char* what() const noexcept {
     ostringstream os;
     os << "  at " << _location << endl;
     os << "    expected value: " << _expected << endl;
@@ -51,9 +52,9 @@ public:
   MissingExceptionExpectationException(string loc) :
     _location(loc) { }
 
-  virtual ~MissingExceptionExpectationException() throw() { }
+  virtual ~MissingExceptionExpectationException() noexcept { }
 
-  virtual const char* what() const throw() {
+  virtual const char* what() const noexcept {
     ostringstream os;
     os << "  at " << _location << endl;
     os << "    an exception was expected" << endl;
@@ -78,9 +79,9 @@ public:
   WrongExceptionExpectationException(string actual, string expected, string loc) :
     _actual(actual), _expected(expected), _location(loc) { }
 
-  virtual ~WrongExceptionExpectationException() throw() { }
+  virtual ~WrongExceptionExpectationException() noexcept { }
 
-  virtual const char* what() const throw() {
+  virtual const char* what() const noexcept {
     ostringstream os;
     os << "  at " << _location << endl;
     os << "    an unexpected exception ocurred" << endl;
