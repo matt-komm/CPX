@@ -125,7 +125,7 @@ class ConcretePluginProducer:
     static std::string getDescription() { return DESCRIPTION; }
 
 #define cpx_init_module() \
-    extern "C" void init(cpx::PluginFactory* pluginFactory) 
+    extern "C" void cpx_shared init(cpx::PluginFactory* pluginFactory) 
 
 #define cpx_register_plugin(PRODUCER, PLUGINCLASS) \
     static cpx::ConcretePluginProducer<PRODUCER,PLUGINCLASS> producer(pluginFactory)
