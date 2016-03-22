@@ -61,10 +61,11 @@ void WindowsLibraryLoader::loadLibrary(std::string file)
         }
         (initFct)(_pluginFactory);
         _loadedLibHandles[file]=lib_handle;
-        
-        
     }
-    
+    else
+    {
+        cpx_throw("Plugin file '",file,"' already loaded");
+    }
 }
 
 WindowsLibraryLoader::~WindowsLibraryLoader()

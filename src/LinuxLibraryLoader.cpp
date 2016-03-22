@@ -36,7 +36,7 @@ void LinuxLibraryLoader::loadLibrary(std::string file)
     }
     else
     {
-        cpx_throw("Plugin file ",file," already loaded");
+        cpx_throw("Plugin file '",file,"' already loaded");
     }
 }
 
