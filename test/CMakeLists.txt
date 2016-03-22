@@ -31,16 +31,13 @@ set_target_properties(cpx-test-plugin-other PROPERTIES PREFIX "")
 set_target_properties(cpx-test-plugin-other PROPERTIES SUFFIX ".cpx")
 target_link_libraries(cpx-test-plugin-other cpx)
 
-install(
-    TARGETS cpx-test cpx-test-plugin cpx-test-plugin-copy cpx-test-plugin-other
-    RUNTIME DESTINATION bin
-    LIBRARY DESTINATION lib/test
-    ARCHIVE DESTINATION lib/test
-)
-
 
 add_test(
     NAME cpx-testing 
     COMMAND cpx-test
+    WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
 )
+
+
+
 

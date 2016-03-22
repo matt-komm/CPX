@@ -52,6 +52,7 @@ before_script:
 
 script: 
   - cmake --build . --config Debug
+  - LD_LIBRARY_PATH=`pwd`/test:$LD_LIBRARY_PATH
   - ctest -V -C Debug
   
 branches:

@@ -14,6 +14,8 @@ endif (OSNAME STREQUAL "MACOSX")
 
 include_directories(${PROJECT_SOURCE_DIR}/include ${PROJECT_SOURCE_DIR}/src)
 
+set(CPX_LOCATION ${CMAKE_CURRENT_BINARY_DIR})
+
 OPTION(ENABLE_TEST "Build tests" ON)
 
 if (ENABLE_TEST)
@@ -30,7 +32,6 @@ if (ENABLE_TEST)
 endif (ENABLE_TEST)
 
 
-
 add_library(cpx SHARED
     src/PluginFactory.cpp
     src/LibraryLoader.cpp
@@ -44,11 +45,5 @@ if (OSNAME STREQUAL "MACOSX")
     target_link_libraries(cpx dl)
 endif (OSNAME STREQUAL "MACOSX")
 
-install(
-    TARGETS cpx
-    RUNTIME DESTINATION bin
-    LIBRARY DESTINATION lib
-    ARCHIVE DESTINATION lib
-)
 
 
