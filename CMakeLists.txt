@@ -4,10 +4,14 @@ cmake_minimum_required(VERSION 2.8.3)
 include(detectOS.cmake)
 add_definitions(-DOS_${OSNAME})
 
-#activate C++11 for GCC. MSVC & Clang use it be default.
+#activate C++11 for GCC and Clang. MSVC use it be default.
+message(STATUS "Detected Compiler ID: ${CMAKE_CXX_COMPILER_ID}")
 if (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
     set(CMAKE_CXX_FLAGS "-std=c++0x ${CMAKE_CXX_FLAGS}")
 endif (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+if (CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
+    set(CMAKE_CXX_FLAGS "-std=c++0x ${CMAKE_CXX_FLAGS}")
+endif (CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
 
 include_directories(${PROJECT_SOURCE_DIR}/include ${PROJECT_SOURCE_DIR}/src)
 
