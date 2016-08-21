@@ -4,6 +4,7 @@
 #include "cpx/PluginFactory.hpp"
 
 #include <iostream>
+#include <algorithm>
 
 namespace cpx
 {
@@ -17,9 +18,12 @@ WindowsLibraryLoader::WindowsLibraryLoader(cpx::PluginFactory* pluginFactory):
 void WindowsLibraryLoader::loadLibrary(std::string file)
 {
     typedef void (__cdecl *InitFct)(cpx::PluginFactory*);
+    
+    std::replace( file.begin(), file.end(), '/', '\\');
+    
     if (_loadedLibHandles.find(file)==_loadedLibHandles.end())
     {
-        HINSTANCE lib_handle = LoadLibrary(file.c_str());
+        HINSTANCE lib_handle = LoadLibraryEx(file.c_str(),NULL,LOAD_LIBRARY_SEARCH_DEFAULT_DIRS);
         if (!lib_handle)
         {
             DWORD dwLastError = GetLastError();
