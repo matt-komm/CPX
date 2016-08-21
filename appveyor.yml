@@ -24,6 +24,7 @@ build_script:
 
 test_script:
   - cmd: |
+        PATH=c:\projects\CPX\build;c:\projects\CPX\build\Debug;c:\projects\CPX\build\Debug\test;%PATH%
         cd c:\projects\CPX\build
         ctest -V -C Debug
 
