@@ -1,7 +1,7 @@
 project(CPX)
 cmake_minimum_required(VERSION 2.8.3)
 
-include(detectOS.cmake)
+include(DetectOS.cmake)
 add_definitions(-DOS_${OSNAME})
 
 #activate C++11 for GCC and Clang. MSVC use it be default.
