@@ -13,9 +13,7 @@ if (CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
     set(CMAKE_CXX_FLAGS "-std=c++0x ${CMAKE_CXX_FLAGS}")
 endif (CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
 
-include_directories(${PROJECT_SOURCE_DIR}/include ${PROJECT_SOURCE_DIR}/src)
-
-set(CPX_LOCATION ${CMAKE_CURRENT_BINARY_DIR})
+include_directories(include src)
 
 OPTION(ENABLE_TEST "Build tests" ON)
 
